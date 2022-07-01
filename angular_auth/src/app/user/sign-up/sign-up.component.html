@@ -3,26 +3,55 @@
       <mat-card-header>
         <mat-card-title>Register</mat-card-title>
       </mat-card-header>
-      <form class="example-form">
+      <form #form = "ngForm" (ngSubmit) = "submit(form)" class="example-form">
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Username">
+            <input matInput 
+            placeholder="Username"
+            name="fullName"
+            type="text"
+            ngModel
+            required
+            >
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email">
+            <input 
+                matInput 
+                name="email"
+                type="email"
+                placeholder="Email"
+                [pattern]="emailRegex"
+                ngModel
+                required
+            >
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password">
+            <input 
+            matInput 
+            name="password"
+            type="password"
+            placeholder="Password"
+            ngModel
+            required
+            >
           </mat-form-field>
-          <mat-form-field class="example-full-width">
+          <!-- <mat-form-field class="example-full-width">
             <mat-label>Choose a role...</mat-label>
             <mat-select>
-              <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
+              <mat-option 
+                [value]="roles" 
+                name="roles"
+                *ngFor="let roles of Roles"
+                ngModel
+                >{{roles}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
         </mat-card-content>
-        <button mat-stroked-button color="accent" class="btn-block">Register</button>
+        <button mat-stroked-button 
+        color="accent" 
+        type="submit" [disabled]="form.invalid"
+        class="btn-block">Register</button>
       </form>
     </mat-card>
   </div>

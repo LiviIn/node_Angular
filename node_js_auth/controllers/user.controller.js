@@ -1,21 +1,12 @@
-const mongoose = require('mongoose');
-
-const User = mongoose.model('User');
-
-module.exports.register = (req, res, next) => {
-    var user = new User();
-    user.fullName = req.body.fullName;
-    user.email = req.body.email;
-    user.password = req.body.password;
-    user.save((err, doc) => {
-        if (!err)
-            res.send(doc);
-        else {
-            if (err.code == 11000)
-                res.status(422).send(['Duplicate email adrress found.']);
-            else
-                return next(err);
-        }
-
-    });
-}
+exports.allAccess = (req, res) => {
+    res.status(200).send("Public Content.");
+  };
+  exports.userBoard = (req, res) => {
+    res.status(200).send("User Content.");
+  };
+  exports.adminBoard = (req, res) => {
+    res.status(200).send("Admin Content.");
+  };
+  exports.moderatorBoard = (req, res) => {
+    res.status(200).send("Moderator Content.");
+  };
