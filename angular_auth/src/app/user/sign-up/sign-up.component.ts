@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators,FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { userService } from 'src/app/shared/user.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class SignUpComponent implements OnInit {
   public form: any;
 
   constructor(
-    private api: userService
+    private api: userService,
+    
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +25,8 @@ export class SignUpComponent implements OnInit {
   async submit(data: any){
     this.form = data
     // console.log(data.form.value)
-    this.api.registerUser(data.form.value)
+    this.api.registerUser(data.form.value);
+    this.form.reset()
   }
 
 }

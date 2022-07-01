@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
+
 
 require('dotenv').config(); //.env file npm install
 require('./helpers/init_mongodb');
