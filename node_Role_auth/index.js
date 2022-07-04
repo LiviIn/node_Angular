@@ -3,6 +3,7 @@ const exp = require('express');
 const bp = require('body-parser');
 const { connect } = require('mongoose');
 const { success, error } = require('consola')
+const passport = require('passport');
 
 // Bring in the app constants
 const { DB, PORT } = require("./config");
@@ -13,6 +14,9 @@ const { DB, PORT } = require("./config");
 //  Middleware
 app.use(cors());
 app.use(bp.json());
+app.use(passport.initialize());
+
+require("./middlewares/passport")(passport)
 
 //Router Middleware
 app.use('/api/user', require("./routes/users"));

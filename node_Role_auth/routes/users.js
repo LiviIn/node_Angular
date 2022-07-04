@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 //Bring in the registration function
-const { userRegister, userLogin } = require('../utils/Auth');
+const { userRegister, userLogin, userAuth, serializeUser,  checkRole } = require('../utils/Auth');
 
 //user registration Route
 router.post('/register-user', async (req, res) =>{
@@ -37,25 +37,32 @@ router.post('/login-super-admin', async (req, res) =>{
 })
 
 //Profile Route 
-router.get("profile", async (req, res) => {
+router.get("/profile", userAuth, async (req, res) => {
+
+    return res.json(serializeUser(req.user))
 
 })
 
 
 //user Produced Route
-router.post('/user-protectd', async (req, res) =>{
+router.post('/user-protectd', userAuth, checkRole(['user']), async (req, res) =>{
 
 })
 
 
 //admin Produced Route
-router.post('/admin-protectd', async (req, res) =>{
-
+router.post('/admin-protectd',userAuth, checkRole(['admin']), async (req, res) =>{
+ 
 })
 
 
 //Super admin Produced Route
-router.post('/super-admin-protectd', async (req, res) =>{
+router.post('/super-admin-protectd', checkRole(['superadmin']), async (req, res) =>{
+
+})
+
+//Super admin  and adminProduced Route
+router.post('/super-admin-protectd', checkRole(['superadmin', 'admin']), async (req, res) =>{
 
 })
 
