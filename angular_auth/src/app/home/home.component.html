@@ -10,7 +10,7 @@
     
 </div> -->
 <div class="female">
-    <mat-text>{{female}}:  {{users.length}}</mat-text>
+    <mat-text *ngIf = "users">{{female}}:  {{users.length}}</mat-text>
 </div>
 
 <div class="card" *ngFor = "let user of users">
