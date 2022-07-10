@@ -12,13 +12,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { DetailComponent } from './Detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

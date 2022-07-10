@@ -10,6 +10,10 @@ export class userService {
     token: any;
 
     apiUrl ='http://localhost:4000/api/'; 
+    Api = 'https://gorest.co.in/public/v2/users';
+    userApi = 'https://gorest.co.in/public/v2/';
+    // https://gorest.co.in/public/v2/users/20/posts
+
 
     constructor(
         private http: HttpClient,
@@ -43,6 +47,13 @@ export class userService {
         
     }
 
+
+    getApi(){
+        return this.http.get(this.Api);
+    }
+    getUser(Id: any){
+       return this.http.get(this.userApi + `users/${Id}`)
+    }
     getToken(){
         return this.token;
     }
