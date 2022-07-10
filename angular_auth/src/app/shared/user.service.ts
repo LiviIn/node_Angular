@@ -52,7 +52,7 @@ export class userService {
         return this.http.get(this.Api);
     }
     getUser(Id: any){
-       return this.http.get(this.userApi + `users/${Id}`)
+       return this.http.get(this.userApi + `users/${Id}/posts`)
     }
     getToken(){
         return this.token;
